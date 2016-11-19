@@ -1,0 +1,57 @@
+{
+   "dataSources" : [
+      {
+         "spec" : {
+              "dataSchema": {
+               "dataSource": "gdp",
+               "parser": {
+               "type": "string",
+               "parseSpec": {
+                 "format": "json",
+                 "timestampSpec": {
+                   "column": "date",
+                   "format": "auto"
+                 },
+                 "dimensionsSpec": {
+                   "dimensions": [
+                      "measure"
+                    ]
+                 }
+               }
+               },
+               "metricsSpec": [
+                 {"name": "value", "fieldName": "value", "type": "doubleSum"}
+               ],
+               "granularitySpec": {
+               "type": "uniform",
+               "segmentGranularity": "FIVE_MINUTE",
+               "queryGranularity": "NONE"
+               }
+               },
+
+            "tuningConfig" : {
+               "maxRowsInMemory" : "100000",
+               "type" : "realtime",
+               "windowPeriod" : "PT5M",
+               "intermediatePersistPeriod" : "PT5M"
+            }
+         },
+         "properties" : {
+            "topicPattern.priority" : "1",
+            "topicPattern" : "demo.gdp"
+         }
+      }
+
+   ],
+   "properties" : {
+       "zookeeper.connect" : "localhost:2181",
+       "zookeeper.timeout" : "PT20S",
+       "druid.selectors.indexing.serviceName" : "druid/overlord",
+       "druid.discovery.curator.path" : "/druid/discovery",
+       "kafka.zookeeper.connect" : "localhost:2181",
+       "kafka.group.id" : "druid_group_id",
+       "consumer.numThreads" : "2",
+       "commit.periodMillis" : "15000",
+       "reportDropsAsExceptions" : "false"
+    }
+}
