@@ -28,7 +28,7 @@ The compose file will launch:
 Loading Sample Data via Tranquility
 ===================================
 Publish sample data to the Kafka topic with `kafka_producer.py`. 
-The sample data is some randomly selected economic data from [Quandl](www.quandl.com). The 
+The sample data is some randomly selected economic data from [Quandl](www.quandl.com).  
 
 Pivot
 =====
@@ -46,7 +46,6 @@ Copy the generated config to conf/pivot/config.yaml.
 
 You can view the dashboard at http://localhost:9091 
 
-Note: Pivot page refreshes don't always seem to work. Refresh the page to see ingested data.
 
 It may take 10m before data shows up in Pivot the first time (this is governed by Tranquility's windowPeriod setting). 
 
